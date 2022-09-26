@@ -9,9 +9,9 @@ use Commando\Command as Command;
 use Monetplus\ApiService;
 
 const MERCHANT_ID = '01201';
-const API_URL = 'https://pay.sanbox.khpos.hu/api/v1.0';
+const API_URL = 'https://api.sandbox.khpos.hu/api/v1.0';
 const PRIVATE_KEY_FILENAME = "./config/01201.key";
-const MIPS_PUBLIC_KEY_FILENAME = "./config/01201.pub";
+const MIPS_PUBLIC_KEY_FILENAME = "./config/mips_pay.sandbox.khpos.hu.pub";
 const PRIVATE_KEY_PASSWORD = null;
 const MIPS_PUBLIC_KEY_PASSWORD = null;
 
