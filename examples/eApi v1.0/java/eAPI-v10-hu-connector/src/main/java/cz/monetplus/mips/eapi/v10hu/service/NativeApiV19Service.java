@@ -14,22 +14,17 @@ public interface NativeApiV19Service {
 	@NonNull
 	PaymentInitResponse paymentInit(@NonNull PaymentInitRequest request) throws MipsException;
 
-
 	@NonNull
 	URI paymentProcess(@NonNull PaymentProcessRequest request) throws MipsException;
-
 
 	@NonNull
 	PaymentStatusResponse paymentStatus(@NonNull PaymentStatusRequest payId) throws MipsException;
 
-
 	@NonNull
 	PaymentResponse paymentClose(@NonNull PaymentCloseRequest request) throws MipsException;
 
-
 	@NonNull
 	PaymentResponse paymentReverse(@NonNull PaymentReverseRequest request) throws MipsException;
-
 
 	@NonNull
 	PaymentResponse paymentRefund(@NonNull PaymentRefundRequest request) throws MipsException;
@@ -37,14 +32,10 @@ public interface NativeApiV19Service {
 
 	@NonNull
 	EchoResponse echoGet(@NonNull EchoRequest request) throws MipsException;
-	
 
 	@NonNull
 	EchoResponse echoPost(@NonNull EchoRequest request) throws MipsException;
 
-
-	@NonNull
-	EchoCustomerResponse echoCustomer(@NonNull EchoCustomerRequest request) throws MipsException;
 
 	@NonNull
 	OneclickEchoResponse oneclickEcho(@NonNull OneclickEchoRequest request) throws MipsException;
@@ -55,6 +46,7 @@ public interface NativeApiV19Service {
 	@NonNull
 	OneclickProcessResponse oneclickProcess(@NonNull OneclickProcessRequest request) throws MipsException;
 
+
 	@NonNull
 	ApplepayEchoResponse applepayEcho(@NonNull ApplepayEchoRequest request) throws MipsException;
 
@@ -63,6 +55,7 @@ public interface NativeApiV19Service {
 
 	@NonNull
 	ApplepayProcessResponse applepayProcess(@NonNull ApplepayProcessRequest request) throws MipsException;
+
 
 	@NonNull
 	GooglepayEchoResponse googlepayEcho(@NonNull GooglepayEchoRequest request) throws MipsException;

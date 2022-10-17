@@ -47,9 +47,6 @@
         <Compile Include="Commands\ApplepayProcess.cs" />
 
 
-        <Compile Include="Commands\EchoCustomer.cs" />
-
-
         <Compile Include="Commands\EchoGet.cs" />
 
 
@@ -118,8 +115,6 @@
 
         <Compile Include="Communication\DataObjects\Response\ApplepayInitResponse.cs" />
         <Compile Include="Communication\DataObjects\Response\ApplepayProcessResponse.cs" />
-        <Compile Include="Communication\DataObjects\EchoCustomerRequest.cs" />
-        <Compile Include="Communication\DataObjects\Response\EchoCustomerResponse.cs" />
         <Compile Include="Communication\DataObjects\Response\EchoResponse.cs" />
 
         <Compile Include="Communication\DataObjects\Response\GooglepayEchoResponse.cs" />
@@ -144,7 +139,6 @@
         <Compile Include="Communication\DataObjects\IBasePostRequest.cs" />
         <Compile Include="Communication\DataObjects\Order.cs" />
         <Compile Include="Communication\DataObjects\PaymentInitRequest.cs" />
-        <Compile Include="Communication\DataObjects\PayOneclickInitReq.cs" />
         <Compile Include="Communication\DataObjects\PaymentRefundRequest.cs" />
         <Compile Include="Communication\DataObjects\PayReq.cs" />
         <Compile Include="Communication\DataObjects\Response\PayRes.cs" />

@@ -27,8 +27,6 @@ public class GooglepayInitRequest : SignBaseRequest
 
     [JsonProperty("order")] public Order? Order { get; set; }
 
-    [JsonProperty("clientInitiated")] public bool? ClientInitiated { get; set; }
-
     [JsonProperty("sdkUsed")] public bool? SdkUsed { get; set; }
 
     [JsonProperty("merchantData")] public string? MerchantData { get; set; }
@@ -36,8 +34,6 @@ public class GooglepayInitRequest : SignBaseRequest
     [JsonProperty("payload")] public string? Payload { get; set; }
 
     [JsonProperty("ttlSec")] public long? TtlSec { get; set; }
-
-    [JsonProperty("extensions")] public List<Extension>? Extensions { get; set; }
 
     public override string ToSign()
     {

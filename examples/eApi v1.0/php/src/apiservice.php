@@ -81,26 +81,6 @@ class ApiService
     return $echoResponse;
   }
 
-  function echoCustomer(EchoCustomerRequest $request): EchoCustomerResponse
-  {
-    $this->crypto->createSignature($request);
-    $echoResponse = new EchoCustomerResponse();
-    try {
-      $response = $this->client->connector()->request('POST', $this->client->baseUrl() . "/echo/customer", ['body' => json_encode($request)]);
-    }
-    catch (\GuzzleHttp\Exception\RequestException $e) {
-      if ($e->hasResponse()) {
-        $response = $e->getResponse();
-      }
-      else {
-        $this->logger->error($e);
-      }
-    }
-    $this->mapper->mapObject(json_decode($response->getBody()), $echoResponse);
-    $this->crypto->verifySignature($echoResponse, $echoResponse->signature);
-    return $echoResponse;
-  }
-
   function googlepayProcess(GooglepayProcessRequest $request): ProcessResponse
   {
     $this->crypto->createSignature($request);
@@ -964,7 +944,7 @@ class PaymentInitRequest extends SignBase
   public float $totalAmount;
   public string $currency;
   public string $orderNo;
-  public string $payOperation; //[payment, oneclickPayment, customPayment]
+  public string $payOperation; //[payment, oneclickPayment]
   public string $payMethod; //[card, cart#LVP]
   public bool $closePayment;
 
@@ -977,14 +957,8 @@ class PaymentInitRequest extends SignBase
   /** @var Order */
   public ?Order $order;
   public string $merchantData;
-  public string $customerId;
   public string $language;
   public int $ttlSec;
-  public string $logoVersion;
-  public string $colorSchemeVersion;
-  public string $customExpiry;
-  /** @var Extension[] */
-  public $extensions;
 
   function toSign(): string
   {
@@ -1022,18 +996,10 @@ class PaymentInitRequest extends SignBase
       $sb = ApiUtilsAdd($sb, $this->order->toSign());
     if (isset($this->merchantData))
       $sb = ApiUtilsAdd($sb, $this->merchantData);
-    if (isset($this->customerId))
-      $sb = ApiUtilsAdd($sb, $this->customerId);
     if (isset($this->language))
       $sb = ApiUtilsAdd($sb, $this->language);
     if (isset($this->ttlSec))
       $sb = ApiUtilsAdd($sb, $this->ttlSec);
-    if (isset($this->logoVersion))
-      $sb = ApiUtilsAdd($sb, $this->logoVersion);
-    if (isset($this->colorSchemeVersion))
-      $sb = ApiUtilsAdd($sb, $this->colorSchemeVersion);
-    if (isset($this->customExpiry))
-      $sb = ApiUtilsAdd($sb, $this->customExpiry);
     return $this->removeLast($sb);
   }
 }
@@ -1054,7 +1020,6 @@ class PaymentInitResponse extends SignBase
   public string $resultMessage;
   public int $paymentStatus;
   public string $authCode;
-  public string $customerCode;
   public string $statusDetail;
 
   function toSign(): string
@@ -1072,8 +1037,6 @@ class PaymentInitResponse extends SignBase
       $sb = ApiUtilsAdd($sb, $this->paymentStatus);
     if (isset($this->authCode))
       $sb = ApiUtilsAdd($sb, $this->authCode);
-    if (isset($this->customerCode))
-      $sb = ApiUtilsAdd($sb, $this->customerCode);
     if (isset($this->statusDetail))
       $sb = ApiUtilsAdd($sb, $this->statusDetail);
     return $this->removeLast($sb);
@@ -1448,49 +1411,6 @@ class Endpoint extends Signbase
       $sb = ApiUtilsAdd($sb, $this->url);
     if (isset($this->method))
       $sb = ApiUtilsAdd($sb, $this->method);
-    return $this->removeLast($sb);
-  }
-}
-
-class EchoCustomerRequest extends SignBase
-{
-  public string $merchantId;
-  public string $customerId;
-
-  function __construct(string $merchantId, string $customerId)
-  {
-    $this->merchantId = $merchantId;
-    $this->customerId = $customerId;
-  }
-
-  function toSign(): string
-  {
-    $sb = "";
-    if (isset($this->merchantId))
-      $sb = ApiUtilsAdd($sb, $this->merchantId);
-    if (isset($this->customerId))
-      $sb = ApiUtilsAdd($sb, $this->customerId);
-    if (isset($this->dttm))
-      $sb = ApiUtilsAdd($sb, $this->dttm);
-    return $this->removeLast($sb);
-  }
-}
-class EchoCustomerResponse extends SignBase
-{
-  public string $customerId;
-  public int $resultCode;
-  public string $resultMessage;
-  function toSign(): string
-  {
-    $sb = "";
-    if (isset($this->customerId))
-      $sb = ApiUtilsAdd($sb, $this->customerId);
-    if (isset($this->dttm))
-      $sb = ApiUtilsAdd($sb, $this->dttm);
-    if (isset($this->resultCode))
-      $sb = ApiUtilsAdd($sb, $this->resultCode);
-    if (isset($this->resultMessage))
-      $sb = ApiUtilsAdd($sb, $this->resultMessage);
     return $this->removeLast($sb);
   }
 }

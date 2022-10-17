@@ -25,8 +25,7 @@ public class ArgsConfig implements Cloneable {
 		APPLEPAY_PROCESS,
 		GOOGLEPAY_ECHO,
 		GOOGLEPAY_INIT,
-		GOOGLEPAY_PROCESS,
-		ECHO_CUSTOMER
+		GOOGLEPAY_PROCESS
 	}
 	
 	@Option(name = "-m", aliases = { "--mode" }, usage = "Run mode  (default: ECHO_GET)")
@@ -34,9 +33,6 @@ public class ArgsConfig implements Cloneable {
 	
 	@Option(name = "-p", aliases = { "--payId" }, usage = "Pay ID")
 	public String payId;
-
-	@Option(name = "-c", aliases = { "--customerId" }, usage = "Customer ID")
-	public String customerId;
 
 	@Option(name = "-i", aliases = { "--initFile" }, usage = "Base file for init operations JSON requests")
 	public String initFile;
@@ -58,7 +54,6 @@ public class ArgsConfig implements Cloneable {
 		ArgsConfig c = new ArgsConfig();
 		c.runMode = runMode;
 		c.payId = payId;
-		c.customerId = customerId;
 		c.initFile = initFile;
 		c.amount = amount;
 		c.origPayId = origPayId;

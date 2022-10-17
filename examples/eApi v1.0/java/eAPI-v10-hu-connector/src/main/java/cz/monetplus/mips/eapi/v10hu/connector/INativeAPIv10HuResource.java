@@ -13,7 +13,6 @@ import javax.ws.rs.core.Response;
 import cz.monetplus.mips.eapi.v10hu.connector.entity.ApplepayEchoRequest;
 import cz.monetplus.mips.eapi.v10hu.connector.entity.ApplepayInitRequest;
 import cz.monetplus.mips.eapi.v10hu.connector.entity.ApplepayProcessRequest;
-import cz.monetplus.mips.eapi.v10hu.connector.entity.EchoCustomerRequest;
 import cz.monetplus.mips.eapi.v10hu.connector.entity.EchoRequest;
 import cz.monetplus.mips.eapi.v10hu.connector.entity.GooglepayEchoRequest;
 import cz.monetplus.mips.eapi.v10hu.connector.entity.GooglepayInitRequest;
@@ -70,6 +69,7 @@ public interface INativeAPIv10HuResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	Response paymentRefund(PaymentRefundRequest req);
 
+
 	@Path( "/oneclick/echo" )
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -102,11 +102,6 @@ public interface INativeAPIv10HuResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	Response echo(EchoRequest req);
 
-	@POST
-	@Path( "/echo/customer" ) 
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	Response echoCustomer(EchoCustomerRequest req); 
 
 	@POST
 	@Path( "/googlepay/init" ) 
@@ -120,12 +115,12 @@ public interface INativeAPIv10HuResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	Response googlepayEcho(GooglepayEchoRequest req);
 
-
 	@POST
 	@Path( "/googlepay/process" )
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	Response googlepayProcess(GooglepayProcessRequest req);
+
 
 	@POST
 	@Path("/applepay/echo")

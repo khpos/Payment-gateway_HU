@@ -153,8 +153,4 @@ public class ExamplesServiceImpl implements ExamplesService {
         return nativeApiV19Service.googlepayProcess(new GooglepayProcessRequest(merchantId, payId));
     }
 
-    @Override
-    public @NonNull EchoCustomerResponse echoCustomer(@NonNull String customerId) throws MipsException {
-        return nativeApiV19Service.echoCustomer(new EchoCustomerRequest(merchantId, customerId));
-    }
 }

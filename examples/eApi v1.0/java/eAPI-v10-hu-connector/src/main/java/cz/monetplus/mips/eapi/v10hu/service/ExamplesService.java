@@ -29,6 +29,4 @@ public interface ExamplesService {
     @NonNull GooglepayEchoResponse googlepayEcho() throws MipsException;
     @NonNull GooglepayInitResponse googlepayInit(@NonNull File initFile, String payload) throws MipsException;
     @NonNull GooglepayProcessResponse googlepayProcess(@NonNull String payId) throws MipsException;
-
-    @NonNull EchoCustomerResponse echoCustomer(@NonNull String customerId) throws MipsException;
 }

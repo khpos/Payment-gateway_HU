@@ -28,10 +28,6 @@ public enum RespCode {
 	ONECLICK_TEMPLATE_CUSTOMER_REJECTED(730, "Oneclick template customer rejected"),
 	ONECLICK_TEMPLATE_PAYMENT_REVERSED(740, "Oneclick template payment reversed"),
 
-	CUSTOMER_NOT_FOUND(800, "Customer not found"),
-	CUSTOMER_FOUND_NO_CARDS(810, "Customer found, no saved card(s)"),
-	CUSTOMER_FOUND_WITH_CARDS(820, "Customer found, found saved card(s)"),
-
 	;
 	
 	private final int code;

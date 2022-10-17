@@ -2,13 +2,13 @@ Requirements:
 - installed php 8
 
 1. download and unzip or clone git repository with java plugin for K&H payment gateway
-   (https://github.com/khpos/Payment-Gateway)
+   (https://github.com/khpos/Payment-Gateway_EN)
 
 2. goto current directory where composer.json is located and run "php .\composer.phar update"
 
 3. configure src/examples.php
    a. setup url of K&H payment gateway for given environment, i.e. for integration environment set to value
-      API_URL='https://pay.sandbox.khpos.hu/api/v1.0'
+      API_URL='https://api.sandbox.khpos.hu/api/v1.0'
 
    b. setup path to public key of K&H payment gateway, e.g.
       MIPS_PUBLIC_KEY_FILENAME='./config/mips_pay.sandbox.khpos.hu.pub'
@@ -36,10 +36,6 @@ Requirements:
 	#### payment init (oneclick template)
 
 	   php .\src\examples.php -m PAYMENT_INIT -i config/payment-init-oneclick-base.json
-
-	#### payment init (custom payment)
-
-	   php .\src\examples.php -m PAYMENT_INIT -i config/payment-init-custom-base.json
 
 	#### payment process
 

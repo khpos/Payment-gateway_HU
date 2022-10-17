@@ -3,13 +3,13 @@ Requirements:
 - installed maven 3
 
 1. download and unzip or clone git repository with java plugin for K&H payment gateway
-   (https://github.com/khpos/Payment-Gateway)
+   (https://github.com/khpos/Payment-Gateway_EN)
 
 2. goto current directory where pom.xml is located and run "mvn package"
 
 3. configure config/application.properties
    a. setup url of K&H payment gateway for given environment, i.e. for integration environment set to value
-      native.api.url=https://pay.sandbox.khpos.hu
+      native.api.url=https://api.sandbox.khpos.hu
 
    b. setup path to public key of K&H payment gateway, e.g.
       mips.public.key.filename=config/mips_pay.sandbox.khpos.hu.pub
@@ -40,12 +40,6 @@ Requirements:
       ```
 	  run.bat -m PAYMENT_INIT -i config/payment-init-oneclick-base.json
 	  run.sh  -m PAYMENT_INIT -i config/payment-init-oneclick-base.json
-      ```
-   
-    #### payment init (custom payment)
-      ```
-	  run.bat -m PAYMENT_INIT -i config/payment-init-custom-base.json
-	  run.sh  -m PAYMENT_INIT -i config/payment-init-custom-base.json
       ```
    
     #### payment process
@@ -99,16 +93,10 @@ Requirements:
 	  run.sh  -m ONECLICK_INIT -i config/oneclick-init-base.json
       ```
    
-    #### oneclick start
+    #### oneclick process
       ```
 	  run.bat -m ONECLICK_PROCESS -p <pay-id-from-previous-oneclick-init-call>
 	  run.sh  -m ONECLICK_PROCESS -p <pay-id-from-previous-oneclick-init-call>
-      ```
-   
-    #### echo customer 
-      ```
-	  run.bat -m ECHO_CUSTOMER -c <customer-id>
-	  run.sh  -m ECHO_CUSTOMER -c <customer-id>
       ```
    
     #### applepay echo

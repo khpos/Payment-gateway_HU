@@ -23,7 +23,6 @@ public class MipsConnector
     private const string ONECLICK_INIT = "/oneclick/init";
     private const string ONECLICK_PROCESS = "/oneclick/process";
     private const string ECHO = "/echo";
-    private const string ECHO_CUSTOMER = "/echo/customer";
     private const string GOOGLEPAY_INIT = "/googlepay/init";
     private const string GOOGLEPAY_ECHO = "/googlepay/echo";
     private const string GOOGLEPAY_PROCESS = "/googlepay/process";
@@ -77,18 +76,6 @@ public class MipsConnector
                            $"{ECHO}";
         return Request
             <EchoResponse, EchoRequest>(url, request);
-    }
-
-    public EchoCustomerResponse EchoCustomer(string customerId)
-    {
-        var request = new EchoCustomerRequest
-        {
-            CustomerId = customerId
-        };
-        const string url =
-            $"{Constants.GatewayUrl}" +
-            $"{ECHO_CUSTOMER}";
-        return Request<EchoCustomerResponse, EchoCustomerRequest>(url, request);
     }
 
     public OneclickEchoResponse OneclickEcho(string origPayId)

@@ -334,20 +334,4 @@ public class NativeApiV19ServiceImpl implements NativeApiV19Service {
         }
     }
 
-    @Override
-    @SignedApiMethod
-    public @NonNull EchoCustomerResponse echoCustomer(@NonNull EchoCustomerRequest request) throws MipsException {
-        try {
-            Response response = resource.echoCustomer(request);
-            if (response == null || response.getStatus() != 200) {
-                throw new MipsException(RespCode.INTERNAL_ERROR,
-                        "No response from nativeAPI, http response "
-                                + (response != null ? response.getStatus() : "--"));
-            }
-            return response.readEntity(EchoCustomerResponse.class);
-        } catch (Exception e) {
-            throw new MipsException(RespCode.INTERNAL_ERROR,
-                    "nativeAPI call failed: " + e.getMessage());
-        }
-    }
 }

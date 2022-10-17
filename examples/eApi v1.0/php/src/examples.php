@@ -22,10 +22,7 @@ $logger = new Logger('Examples');
 $logger->pushHandler(new StreamHandler('php://stdout', Logger::INFO));
 
 $examples_cmd->option('e')
-
     ->aka('event');
-$examples_cmd->option('c')
-    ->aka('customerId');
 $examples_cmd->option('r')
     ->aka('reason');
 $examples_cmd->option('t')
@@ -59,8 +56,7 @@ $examples_cmd->option('m')
             'APPLEPAY_PROCESS',
             'GOOGLEPAY_ECHO',
             'GOOGLEPAY_INIT',
-            'GOOGLEPAY_PROCESS',
-            'ECHO_CUSTOMER'
+            'GOOGLEPAY_PROCESS'
         );
         return in_array($mode, $modes);
     });
@@ -91,19 +87,6 @@ switch ($examples_cmd['mode']) {
         } 
         break;           
 
-    case "ECHO_CUSTOMER":
-        $customerId = $examples_cmd['customerId'];
-        if(strlen($customerId) == 0) {
-            $logger->error("customerId not specified via -c option");
-            break;
-        }
-        $response = $service->echoCustomer(new EchoCustomerRequest(MERCHANT_ID, $customerId));
-        if($response->resultCode == 0) {
-            $logger->info("Operation succeeded", ["payId" => $response->payId, "paymentStatus" => $response->paymentStatus]);
-        } else {
-            $logger->error("Operation fail", ["resultCode" => $response->resultCode, "resultMessage" => $response->resultMessage]);
-        } 
-        break;
     case "GOOGLEPAY_ECHO":
         $request = new EchoRequest(MERCHANT_ID);
         $response = $service->googlepayEcho($request);

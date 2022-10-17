@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class PaymentInitRequest extends SignBase {
     private String merchantId;
     private String orderNo;
-    private String payOperation; //[payment, oneclickPayment, customPayment]
+    private String payOperation; //[payment, oneclickPayment]
     private String payMethod; //[card, cart#LVP]
     private Long totalAmount;
     private String currency;
@@ -26,14 +26,8 @@ public class PaymentInitRequest extends SignBase {
     private Customer customer;
     private Order order;
     private String merchantData;
-    private String customerId;
     private String language;
     private Integer ttlSec;
-    private Integer logoVersion;
-    private Integer colorSchemeVersion;
-    private String customExpiry;
-    private List<Extension> extensions;
-
     
     @Override
     public String toSign() {
@@ -56,12 +50,8 @@ public class PaymentInitRequest extends SignBase {
         if (null != customer) add(sb, customer.toSign());
         if (null != order) add(sb, order.toSign());
         add(sb, merchantData);
-        add(sb, customerId);
         add(sb, language);
         add(sb, ttlSec);
-        add(sb, logoVersion);
-        add(sb, colorSchemeVersion);
-        add(sb, customExpiry);
         deleteLast(sb);
         return sb.toString();
     }
