@@ -23,6 +23,8 @@ public class PaymentInitResponse extends SignBase {
     @Getter
     private String authCode;
     @Getter
+    private String customerCode;
+    @Getter
     private String statusDetail;
 
     @Getter
@@ -37,6 +39,7 @@ public class PaymentInitResponse extends SignBase {
         add(sb, getResultMessage());
         add(sb, getPaymentStatus());
         add(sb, getAuthCode());
+        add(sb, getCustomerCode());
         add(sb, getStatusDetail());
         deleteLast(sb);
         return sb.toString();

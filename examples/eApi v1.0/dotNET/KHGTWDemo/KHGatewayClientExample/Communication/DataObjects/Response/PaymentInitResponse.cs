@@ -11,6 +11,7 @@ public class PaymentInitResponse : SignBase
     public string? ResultMessage { get; set; }
     public int? PaymentStatus { get; set; }
     public string? AuthCode { get; set; }
+    public string? CustomerCode { get; set; }
     public string? StatusDetail { get; set; }
 
     public Action? Actions { get; } 
@@ -24,6 +25,7 @@ public class PaymentInitResponse : SignBase
         Add(sb, ResultMessage);
         Add(sb, PaymentStatus);
         Add(sb, AuthCode);
+        Add(sb, CustomerCode);
         Add(sb, StatusDetail);
         DeleteLast(sb);
         return sb.ToString();

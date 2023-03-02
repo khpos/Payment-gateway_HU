@@ -28,6 +28,7 @@ public class OneclickInitRequest extends SignBase  {
 	private Boolean sdkUsed;
 	private String merchantData;
 	private List<Extension> extensions;
+	private Integer ttlSec;
 
 	@Override
 	public String toSign() {
@@ -47,6 +48,7 @@ public class OneclickInitRequest extends SignBase  {
 		add(sb, clientInitiated);
 		add(sb, sdkUsed);
 		add(sb, merchantData);
+		add(sb, ttlSec);
 		deleteLast(sb);
 		return sb.toString();
 	}

@@ -41,14 +41,17 @@ public class GooglepayInitRequest extends SignBase {
         add(sb, totalAmount);
         add(sb, currency);
         add(sb, closePayment);
-        add(sb, merchantData);
+
         add(sb, payload);
         add(sb, returnUrl);
         add(sb, returnMethod);
         if (null != customer) add(sb, customer.toSign());
         if (null != order) add(sb, order.toSign());
+        add(sb, sdkUsed);
+        add(sb, merchantData);
         add(sb, ttlSec);
         deleteLast(sb);
         return sb.toString();
     }
+
 }

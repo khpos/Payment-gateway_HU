@@ -33,6 +33,11 @@ public class OneclickInitRequest : SignBaseRequest
 
     [JsonProperty("merchantData")] public string? MerchantData { get; set; }
 
+    [JsonProperty("extension")] private List<Extension>? Extensions { get; set; }
+    
+    [JsonProperty("ttlSec")] private int? TtlSec { get; set; }
+
+
     public override string ToSign()
     {
         var sb = new StringBuilder();
@@ -51,6 +56,7 @@ public class OneclickInitRequest : SignBaseRequest
         Add(sb, ClientInitiated);
         Add(sb, SdkUsed);
         Add(sb, MerchantData);
+        Add(sb, TtlSec);
         DeleteLast(sb);
         return sb.ToString();
     }

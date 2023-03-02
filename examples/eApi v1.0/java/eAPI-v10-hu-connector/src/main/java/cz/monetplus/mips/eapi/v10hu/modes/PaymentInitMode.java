@@ -38,6 +38,10 @@ public class PaymentInitMode implements RunMode {
 			
 			PaymentInitResponse res = examplesService.paymentInit(f);
 			log.info("result code: {} [{}], payment status {}, payId {}", res.getResultCode(), res.getResultMessage(), res.getPaymentStatus(), res.getPayId());
+			if (!StringUtils.isBlank(res.getCustomerCode())) {
+				log.info("Custom payment initialized, customer code {}, finish payment via https://(i)platebnibrana.csob.cz/zaplat/{}", res.getCustomerCode(), res.getCustomerCode());
+			}
+
 			
 		} catch (Exception e) {
 			throw new RuntimeException(e);

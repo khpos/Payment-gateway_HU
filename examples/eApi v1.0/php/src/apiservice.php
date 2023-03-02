@@ -623,6 +623,7 @@ class OneclickInitRequest extends SignBase
   public string $merchantData;
   /** @var Extension[] */
   public $extensions;
+  public int ttlSec;
 
   /**
    *
@@ -661,6 +662,8 @@ class OneclickInitRequest extends SignBase
       $sb = ApiUtilsAdd($sb, $this->sdkUsed);
     if (isset($this->merchantData))
       $sb = ApiUtilsAdd($sb, $this->merchantData);
+    if (isset($this->ttlSec))
+      $sb = ApiUtilsAdd($sb, $this->ttlSec);
     return $this->removeLast($sb);
   }
 }

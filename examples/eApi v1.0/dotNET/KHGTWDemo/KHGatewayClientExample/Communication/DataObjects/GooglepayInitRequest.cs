@@ -35,6 +35,8 @@ public class GooglepayInitRequest : SignBaseRequest
 
     [JsonProperty("ttlSec")] public long? TtlSec { get; set; }
 
+    [JsonProperty("extensions")] public List<Extension>? Extensions { get; set; }
+
     public override string ToSign()
     {
         var sb = new StringBuilder();
@@ -45,12 +47,14 @@ public class GooglepayInitRequest : SignBaseRequest
         Add(sb, TotalAmount);
         Add(sb, Currency);
         Add(sb, ClosePayment);
-        Add(sb, MerchantData);
+
         Add(sb, Payload);
         Add(sb, ReturnUrl);
         Add(sb, ReturnMethod);
-        if (null != Customer) Add(sb, Customer.ToString());
-        if (null != Order) Add(sb, Order.ToString());
+        if (null != Customer) Add(sb, Customer.ToSign());
+        if (null != Order) Add(sb, Order.ToSign());
+        Add(sb, SdkUsed);
+        Add(sb, MerchantData);
         Add(sb, TtlSec);
         DeleteLast(sb);
         return sb.ToString();

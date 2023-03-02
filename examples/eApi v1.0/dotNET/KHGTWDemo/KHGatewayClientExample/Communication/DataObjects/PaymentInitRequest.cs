@@ -34,11 +34,20 @@ public class PaymentInitRequest : SignBaseRequest
 
     [JsonProperty("merchantData")] public string? MerchantData { get; set; }
 
+    [JsonProperty("customerId")]
+    public string? CustomerId { get; set; }
+
     [JsonConverter(typeof(StringEnumConverter))]
     [JsonProperty("language")]
     public Lang? Language { get; set; }
 
     [JsonProperty("ttlSec")] public int? TtlSec { get; set; }
+
+    [JsonProperty("logoVersion")] public int? LogoVersion { get; set; }
+
+    [JsonProperty("colorSchemeVersion")] public int? ColorSchemeVersion { get; set; }
+
+    [JsonProperty("customExpiry")] public string? CustomExpiry { get; set; }
 
     public override string ToSign()
     {
@@ -63,11 +72,16 @@ public class PaymentInitRequest : SignBaseRequest
         if (null != Order) Add(sb, Order.ToSign());
 
         Add(sb, MerchantData);
+        Add(sb, CustomerId);
         Add(sb, Language.ToString());
         Add(sb, TtlSec);
+        Add(sb, LogoVersion);
+        Add(sb, ColorSchemeVersion);
+        Add(sb, CustomExpiry);
         DeleteLast(sb);
         return sb.ToString();
     }
+
 }
 
 public enum Lang
