@@ -10,6 +10,8 @@ public class OneclickInitRequest : SignBaseRequest
 
     [JsonProperty("orderNo")] public string? OrderNo { get; set; }
 
+    [JsonProperty("payMethod")] public string? PayMethod { get; set; }
+
     [JsonProperty("totalAmount")] public long? TotalAmount { get; set; }
 
     [JsonProperty("currency")] public string? Currency { get; set; }
@@ -45,6 +47,7 @@ public class OneclickInitRequest : SignBaseRequest
         Add(sb, OrigPayId);
         Add(sb, OrderNo);
         Add(sb, Dttm);
+        Add(sb, PayMethod);
         Add(sb, ClientIp);
         Add(sb, TotalAmount);
         Add(sb, Currency);

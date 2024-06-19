@@ -611,7 +611,7 @@ class OneclickInitRequest extends SignBase
 
   public string $origPayId;
   public string $orderNo;
-  public string $payMethod;
+  public string $payMethod; //[card, card#LVP]
   public string $clientIp;
   public bool $closePayment;
   public string $returnUrl;
@@ -640,6 +640,8 @@ class OneclickInitRequest extends SignBase
       $sb = ApiUtilsAdd($sb, $this->orderNo);
     if (isset($this->dttm))
       $sb = ApiUtilsAdd($sb, $this->dttm);
+    if (isset($this->payMethod))
+      $sb = ApiUtilsAdd($sb, $this->payMethod);
     if (isset($this->clientIp))
       $sb = ApiUtilsAdd($sb, $this->clientIp);
     if (isset($this->totalAmount))

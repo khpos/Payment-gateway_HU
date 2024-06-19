@@ -16,7 +16,7 @@ public class PaymentInitRequest extends SignBase {
     private String merchantId;
     private String orderNo;
     private String payOperation; //[payment, oneclickPayment, customPayment]
-    private String payMethod; //[card, cart#LVP]
+    private String payMethod; //[card, card#LVP]
     private Long totalAmount;
     private String currency;
     private Boolean closePayment = true;

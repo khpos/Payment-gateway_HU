@@ -15,7 +15,7 @@ public class OneclickInitRequest extends SignBase  {
 	private String merchantId;
 	private String origPayId;
 	private String orderNo;
-	private String payMethod;
+	private String payMethod; //[card, card#LVP]
 	private String clientIp;
 	private Long totalAmount;
 	private String currency;
@@ -37,6 +37,7 @@ public class OneclickInitRequest extends SignBase  {
 		add(sb, origPayId);
 		add(sb, orderNo);
 		add(sb, dttm);
+		add(sb, payMethod);
 		add(sb, clientIp);
 		add(sb, totalAmount);
 		add(sb, currency);
