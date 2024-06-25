@@ -960,7 +960,7 @@ class PaymentInitRequest extends SignBase
   public string $returnUrl;
   public string $returnMethod; //[GET, POST]
   /** @var Customer */
-  public ?Cutomer $customer;
+  public ?Customer $customer;
   /** @var Order */
   public ?Order $order;
   public string $merchantData;
