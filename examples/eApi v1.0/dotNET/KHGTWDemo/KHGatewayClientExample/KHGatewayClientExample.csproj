@@ -91,7 +91,6 @@
         <Compile Include="Communication\DataObjects\ApiBase.cs" />
         <Compile Include="Communication\DataObjects\CartItem.cs" />
         <Compile Include="Communication\DataObjects\Customer.cs" />
-        <Compile Include="Communication\DataObjects\CustReq.cs" />
 
 
         <Compile Include="Communication\DataObjects\EchoRequest.cs" />
